@@ -1,38 +1,25 @@
-import * as WebIFC from "web-ifc/web-ifc-api";
-import { BOTParser } from "./parsers/bot-parser";
-import { ProductParser } from "./parsers/product-parser";
-import { CLITool } from "./cli-tool";
-import { JSONLD, SerializationFormat } from "./helpers/BaseDefinitions";
-import { FSOParser } from "./parsers/fso-parser";
+import { ICDDService as MyICDDService } from "./helpers/icdd-service";
 
-export class LBDParser{
+// export class Consolid{
 
-    // initialize the API
-    public ifcApi: WebIFC.IfcAPI = new WebIFC.IfcAPI();
-    
-    public format: SerializationFormat;
+//     public fetch;
+//     public verbose: boolean = false;
+//     public icddService: ICDDService;
 
-    constructor(format: SerializationFormat = SerializationFormat.JSONLD){
-        this.format = format;
-    }
+//     constructor(fetch: any, verbose: boolean = false){
+//         this.fetch = fetch;
+//         this.verbose = verbose;
+//         this.icddService = new ICDDService(fetch, verbose);
+//     }
 
-    public setWasmPath(path: string){
-        this.ifcApi.SetWasmPath(path);
-    }
+//     initICDD(rootURL: string, icddName: string, makePublic: boolean = true){
+//         return this.icddService.initICDD(rootURL, icddName, makePublic)
+//     }
 
-    public async parseBOTTriples(ifcApi: WebIFC.IfcAPI, modelID: number, verbose: boolean = false): Promise<JSONLD|string>{
-        const botParser = new BOTParser(ifcApi, modelID, this.format, verbose);
-        return await botParser.doParse();
-    }
+// }
 
-    public async parseProductTriples(ifcApi: WebIFC.IfcAPI, modelID: number, verbose: boolean = false): Promise<JSONLD|string>{
-        const productParser = new ProductParser(ifcApi, modelID, this.format, verbose);
-        return await productParser.doParse();
-    }
+export namespace Consolid{
 
-    public async parseFSOTriples(ifcApi: WebIFC.IfcAPI, modelID: number, verbose: boolean = false): Promise<JSONLD|string>{
-        const fsoParser = new FSOParser(ifcApi, modelID, this.format, verbose);
-        return await fsoParser.doParse();
-    }
+    export const ICDDService = MyICDDService;
 
 }

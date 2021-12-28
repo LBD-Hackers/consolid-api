@@ -1,0 +1,38 @@
+<h2>Demo</h2>
+
+<div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px" style="width: 100%">
+
+    <div fxLayout="row">
+        <button *ngIf="!isLoggedIn" mat-stroked-button (click)="login()">Log in</button>
+        <button *ngIf="isLoggedIn" mat-stroked-button (click)="logout()">Log out</button>
+    </div>
+
+    <hr>
+
+    <ng-container *ngIf="isLoggedIn">
+
+        <h3>ICDD settings</h3>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>ICDD name</mat-label>
+                <input matInput [(ngModel)]="icddName">
+            </mat-form-field>
+            <mat-slide-toggle [(ngModel)]="makePublic">Public</mat-slide-toggle>
+        </div>
+
+        <button mat-stroked-button (click)="initICDD()">Init ICDD</button>
+
+        <button mat-stroked-button (click)="deleteICDD()">Delete ICDD</button>
+
+        <hr>
+
+        <h3>ICDD content</h3>
+
+        <div fileUpload class="upload" (onFileDropped)="uploadFile($event)">
+            <p>Upload file</p>
+        </div>
+
+    </ng-container>
+
+</div>

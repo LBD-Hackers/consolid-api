@@ -3,15 +3,17 @@ export interface JSONLD{
     "@graph": any[]
 }
 
-export interface TreeNode{
-    "name": string;
-    "id": number;
-    "children"?: TreeNode[];
+export class AccessRights{
+    public read: boolean = false;
+    public append: boolean = false;
+    public write: boolean = false;
+    public control: boolean = false;
 }
 
-export enum SerializationFormat{
-    NQuads="nquads",
-    JSONLD="jsonld"
+export enum ResourceType{
+    FILE="file",
+    DATASET="dataset",
+    CONTAINER="container"
 }
 
 export enum Mimetype{
@@ -21,17 +23,6 @@ export enum Mimetype{
     Trig="application/trig",
     SPARQLJSON="application/sparql-results+json",
     JSONLD="application/ld+json",
-    DLOG="application/x.datalog"
-}
-
-export interface Triple{
-    subject: TripleItem,
-    predicate: TripleItem,
-    object: TripleItem,
-    graph: TripleItem
-}
-
-export interface TripleItem{
-    termType: string;
-    value: string;
+    DLOG="application/x.datalog",
+    Text="text/plain"
 }

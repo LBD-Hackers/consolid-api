@@ -1,16 +1,15 @@
 {
-  "name": "ifc-lbd",
-  "version": "0.0.17",
+  "name": "consolid",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/types/index.d.ts",
   "scripts": {
-    "build": "npm-run-all -l clean -p build:esm build:cjs build:bundles build:cli-tool declarations",
+    "build": "npm-run-all -l clean -p build:esm build:cjs build:bundles declarations",
     "clean": "rimraf lib",
     "declarations": "tsc -p tsconfig.json",
     "build:bundles": "cross-env BABEL_ENV=esmBundled rollup -c",
-    "build:cli-tool": "cross-env BABEL_ENV=esmBundled rollup -c rollup.cli-config.js",
     "build:esm": "cross-env BABEL_ENV=esmUnbundled babel src --extensions '.ts' --out-dir 'lib/esm' --source-maps",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions '.ts' --out-dir 'lib/cjs' --source-maps",
     "copy-assets": "cp node_modules/web-ifc/web-ifc.wasm lib && cp node_modules/web-ifc/web-ifc-mt.wasm lib",
@@ -32,10 +31,14 @@
     "@types/jest": "^27.0.3",
     "@types/jsonld": "^1.5.6",
     "@types/meow": "^6.0.0",
+    "@types/spark-md5": "^3.0.2",
     "@types/yargs": "^17.0.7",
     "babel-jest": "^27.4.5",
     "babel-polyfill": "^6.26.0",
+    "file-api": "^0.10.4",
+    "i": "^0.3.7",
     "jest": "^27.4.5",
+    "npm": "^8.3.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.61.1",
@@ -50,9 +53,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.5",
+    "@inrupt/solid-client": "^1.17.0",
+    "@inrupt/solid-client-authn-browser": "^1.11.3",
+    "@inrupt/solid-client-authn-node": "^1.11.3",
+    "@inrupt/vocab-common-rdf": "^1.0.3",
     "jsonld": "^5.2.0",
-    "meow": "^10.1.2",
-    "web-ifc": "^0.0.30",
+    "spark-md5": "^3.0.2",
+    "url-join-ts": "^1.0.5",
     "yargs": "^17.3.0"
   },
   "browser": {
@@ -62,8 +69,5 @@
   },
   "files": [
     "lib/*"
-  ],
-  "bin": {
-    "ifc-lbd": "./lib/cli-tool/index.js"
-  }
+  ]
 }
