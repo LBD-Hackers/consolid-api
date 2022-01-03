@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SolidAuthService } from './solid-auth.service';
-import { Consolid } from "../../../src";
-import { ICDDService } from '../../../src/helpers/icdd-service';
+// import { ICDDService } from "../../../src/helpers/icdd-service";  // For dev only
+import { Consolid } from "../../../src";  // For dev only
+
+// import { ICDDService } from "../../../lib/esm/helpers";  // For dev only
+// import { Consolid } from '../../../lib/bundles/bundle.esm.min';   // Test lib
 
 @Component({
   selector: 'app-root',
@@ -12,11 +15,11 @@ export class AppComponent implements OnInit{
 
   public isLoggedIn: boolean = false;
   public session: any;
-  public icdd?: ICDDService;
+  public icdd?: any;
 
   public icddName: string = "Project ABC";
   public makePublic: boolean = true;
-  public rootURL: string = "http://localhost:3000/mhra/";
+  public rootURL: string = "http://localhost:3000/test/";
 
   constructor(
     private _auth: SolidAuthService

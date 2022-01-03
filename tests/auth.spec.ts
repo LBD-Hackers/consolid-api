@@ -46,7 +46,7 @@ describe('Auth', () => {
 
     test('can initialize an ICDD container', async () => {
 
-        const rootURL = "http://localhost:3000/mhra/";
+        const rootURL = "http://localhost:3000/test/";
         const icddName = "test-icdd";
 
         const icddRes = await icdd.initICDD(rootURL, icddName, true);
@@ -57,7 +57,7 @@ describe('Auth', () => {
 
     // test('can add a file to ICDD container', async () => {
 
-    //     const icddRootURL = "http://localhost:3000/mhra/test-icdd/";
+    //     const icddRootURL = "http://localhost:3000/test/test-icdd/";
 
     //     console.log(testFile);
 
